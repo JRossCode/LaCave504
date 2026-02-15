@@ -30,11 +30,11 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="hero-keywords">
+          {/*<div className="hero-keywords">
             <span className="keyword">Réemploi</span>
             <span className="keyword">Transmission</span>
             <span className="keyword">Solidarité</span>
-          </div>
+  </div>*/}
         </div>
       </div>
 
