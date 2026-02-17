@@ -57,6 +57,7 @@ a {
   align-items: flex-start;
   width: 1280px;
   max-width: 100vw;
+  height: 100dvh;
   margin: auto;
   margin-top: var(--vertical-margin);
   background-color: var(--color-background);
@@ -329,6 +330,7 @@ a {
   flex-direction: row;
   align-items: center;
   position: relative;
+  z-index: 3;
 }
 
 .hero-content {
