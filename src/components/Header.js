@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-
-function Header({ sticker, instagram, envelope, menu, openEnvelope }) {
+import { Link } from "react-router-dom";
+import Sticker from "./Sticker.js";
+function Header({ sticker, instagram, envelope, location, openEnvelope, emailAssociation }) {
     const [hasScrolled, setHasScrolled] = useState(false);
     const [position, setPosition] = useState({ x: 90, y: 350 });
     const [dragging, setDragging] = useState(false);
     const offset = useRef({ x: 0, y: 0 });
-
     useEffect(() => {
         const handleScroll = () => {
             if (!hasScrolled && window.scrollY > 0) {
@@ -65,34 +65,20 @@ function Header({ sticker, instagram, envelope, menu, openEnvelope }) {
             </div>
 
             <div className="header-content">
-                <img
-                    src={sticker}
-                    alt="Logo"
-                    className={`logo ${dragging ? "dragging" : ""}`}
-                    style={{
-                        left: position.x,
-                        top: position.y,
-                        position: "fixed",
-                        cursor: dragging ? "grabbing" : "grab",
-                    }}
-                    onMouseDown={handleDown}
-                    onTouchStart={handleDown}
-                    draggable={false}
-                />
-
+                <Sticker position={position} dragging={dragging} handleDown={handleDown} sticker={sticker} nav={window.innerWidth < 1280} />
                 <nav className="navigation">
                     <div className="nav-item instagram">
-                        <img src={instagram} alt="Instagram" className="nav-icon" />
+                        <img src={instagram} alt="Instagram" className="nav-icon" onClick={() => window.open("https://www.instagram.com/lacave504/", "_blank")} />
                     </div>
 
-                    <div className="nav-item">
+                    <a className="nav-item" href={`mailto:${emailAssociation}`}>
                         <img src={envelope} alt="Email" className="nav-icon default" />
                         <img src={openEnvelope} alt="Open Email" className="nav-icon open" />
-                    </div>
+                    </a>
 
-                    <div className="nav-item">
-                        <img src={menu} alt="Menu" className="nav-icon" />
-                    </div>
+                    <Link to="/location" className="nav-item location">
+                        <img src={location} alt="Location" className="nav-icon" />
+                    </Link>
                 </nav>
 
                 <div className="hero-title-wrapper">

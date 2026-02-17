@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,6 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-color: var(--color-purple);
 }
 
 code {
@@ -42,5 +44,11 @@ code {
 
 #root {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
+  --color-green: #4CBA76;
+  --color-black: #000;
+  --color-purple: #784ACD;
+  --color-light-blue: #DAE8FF;
+  --color-dark-purple: #522E92;
+  --color-background: #F5F5F5;
 }
