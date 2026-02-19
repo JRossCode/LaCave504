@@ -2,8 +2,6 @@ import '../App.css';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import Sticker from '../components/Sticker';
-import sticker from '../assets/logos/sticker.png';
 export default function Location({ latitude, longitude, emailAssociation, numAssociation, adresseAtelier, adressePostale }) {
     return (
         <div className="location-page">
