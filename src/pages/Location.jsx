@@ -2,6 +2,7 @@ import '../App.css';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import locationIcon from '../assets/icons/Location2.png';
 export default function Location({ latitude, longitude, emailAssociation, numAssociation, adresseAtelier, adressePostale }) {
     return (
         <div className="location-page">
@@ -45,7 +46,7 @@ export default function Location({ latitude, longitude, emailAssociation, numAss
                         />
                         <Marker
                             icon={new L.Icon({
-                                iconUrl: require('../assets/icons/Location2.png'),
+                                iconUrl: locationIcon,
                                 iconAnchor: null, popupAnchor: null,
                                 shadowUrl: null,
                                 shadowSize: null,

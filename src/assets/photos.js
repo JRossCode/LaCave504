@@ -1,7 +1,6 @@
-const images = require.context(
-    "./photos",
-    false,
-    /\.(png|jpe?g|webp)$/i
-);
+const modules = import.meta.glob('./photos/*.{png,jpg,jpeg,webp}', {
+    eager: true,
+    import: 'default',
+});
 
-export const photoList = images.keys().map(images);
+export const photoList = Object.values(modules);

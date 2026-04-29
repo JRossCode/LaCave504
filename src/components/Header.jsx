@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import Sticker from "./Sticker.js";
+import Sticker from "./Sticker";
 function Header({ sticker, instagram, envelope, location, openEnvelope, emailAssociation }) {
     const [hasScrolled, setHasScrolled] = useState(false);
     const [position, setPosition] = useState({ x: 90, y: 350 });

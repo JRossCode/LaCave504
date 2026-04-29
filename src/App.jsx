@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Location from "./pages/Location.js";
-import Home from "./pages/Home.js";
+import Location from "./pages/Location";
+import Home from "./pages/Home";
 function App() {
 
   const emailAssociation = 'lacave504@gmail.com';
