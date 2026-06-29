@@ -16,6 +16,9 @@ import location from '../assets/icons/Location.png';
 
 export default function Home({ emailAssociation }) {
     return (
+        <>
+            {/* Métadonnées propres à la page d'accueil (hoistées dans <head> par React 19) */}
+            <link rel="canonical" href="https://lacave504.fr/" />
 
         <div className="content">
 
@@ -33,15 +36,16 @@ export default function Home({ emailAssociation }) {
 
                 <div className="hero-section">
                     <div className="hero-content">
+                        <h1 className="sr-only">La Cave 504 — atelier vélo associatif à Paris : réemploi, réparation et auto-réparation</h1>
                         <div className="hero-description-wrapper">
                             <p className="hero-description">
                                 La Cave 504 est un projet associatif dédié au réemploi cycle, où des vélos et des pièces destinés au rebut sont curâtes, restaurés et remis en circulation. Ancrée dans le nord de Paris, l'association mêle mécanique, transmission et auto-réparation pour construire une mobilité plus durable, accessible et collective.
                             </p>
                         </div>
                         <div className="hero-keywords">
-                            <nav className="keyword" id='reemploi' >Réemploi</nav>
-                            <nav className="keyword" id='transmission'>Transmission</nav>
-                            <nav className="keyword" id='solidarite'>Solidarité</nav>
+                            <span className="keyword" id='reemploi' >Réemploi</span>
+                            <span className="keyword" id='transmission'>Transmission</span>
+                            <span className="keyword" id='solidarite'>Solidarité</span>
                         </div>
                     </div>
                 </div>
@@ -87,5 +91,6 @@ export default function Home({ emailAssociation }) {
                 className="decorative-image"
             />
         </div >
+        </>
     )
 }

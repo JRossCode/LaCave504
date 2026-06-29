@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "La Cave 504",
+  "name": "La Cave 504 — Atelier vélo associatif",
+  "description": "Atelier vélo associatif à Paris dédié au réemploi cycle, à l'auto-réparation et à une mobilité durable.",
+  "lang": "fr",
   "icons": [
     {
       "src": "favicon.ico",

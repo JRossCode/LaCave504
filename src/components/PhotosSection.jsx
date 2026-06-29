@@ -74,7 +74,16 @@ function PhotosSection({ photos, speed = 1 }) {
     return (
         <div className="photos-section" ref={ref}>
             {photos.map((src, i) => (
-                <img key={i} src={src} alt="" draggable={false} />
+                <img
+                    key={i}
+                    src={src}
+                    alt="Vélos et pièces réemployés à l'atelier La Cave 504"
+                    width={430}
+                    height={465}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                />
             ))}
         </div>
     );

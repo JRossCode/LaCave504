@@ -6,6 +6,11 @@ import locationIcon from '../assets/icons/Location2.png';
 export default function Location({ latitude, longitude, emailAssociation, numAssociation, adresseAtelier, adressePostale }) {
     return (
         <div className="location-page">
+            {/* Métadonnées propres à la page (hoistées dans <head> par React 19) */}
+            <title>Nous trouver | La Cave 504 — Atelier vélo à Clichy / Paris</title>
+            <meta name="description"
+                content="Où nous trouver : La Cave 504, atelier vélo associatif au sein de La Partagerie, 30 Rue Mozart, 92110 Clichy. Plan d'accès, contact et horaires." />
+            <link rel="canonical" href="https://lacave504.fr/location" />
 
             <div className="content location">
                 <section className="location-hero">
