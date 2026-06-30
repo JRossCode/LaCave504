@@ -39,7 +39,7 @@ export default function Home({ emailAssociation }) {
                         <h1 className="sr-only">La Cave 504 — atelier vélo associatif à Paris : réemploi, réparation et auto-réparation</h1>
                         <div className="hero-description-wrapper">
                             <p className="hero-description">
-                                La Cave 504 est un projet associatif dédié au réemploi cycle, où des vélos et des pièces destinés au rebut sont curâtes, restaurés et remis en circulation. Ancrée dans le nord de Paris, l'association mêle mécanique, transmission et auto-réparation pour construire une mobilité plus durable, accessible et collective.
+                                Ancrée dans le nord de Paris, l'association mêle mécanique, transmission et auto-réparation pour construire une mobilité plus durable, accessible et collective. Fondée par un collectif de mécanicien·nes diplomés, le projet est fondamentalement relié au réemploi cycle et à la passion de la mécanique, où des vélos et des pièces destinés au rebut sont curâtes, restaurés et remis en circulation.
                             </p>
                         </div>
                         <div className="hero-keywords">
