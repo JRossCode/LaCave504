@@ -724,3 +724,232 @@ a {
 
 
 }
+/* ==========================================================================
+   Lien agenda dans le header
+   Positionné en absolu comme .navigation, à la même hauteur (top: 16px) mais
+   ancré à gauche du .header-content.
+   ========================================================================== */
+
+.nav-agenda {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  z-index: 2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-agenda-label {
+  color: #FFF;
+  font-family: 'BaseNeue', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.2px;
+  max-width: 320px;
+}
+
+.nav-agenda:hover .nav-agenda-label {
+  color: var(--color-green);
+}
+
+.nav-agenda:hover img {
+  animation: jump 0.6s linear infinite;
+}
+
+/* ==========================================================================
+   Page agenda
+   ========================================================================== */
+
+.agenda-page {
+  height: auto;
+  min-height: 100dvh;
+  padding-bottom: var(--vertical-margin);
+}
+
+.content.agenda-content {
+  height: auto;
+  min-height: 0;
+  padding: 0 var(--text-padding);
+}
+
+.agenda-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: var(--text-width);
+}
+
+.agenda-back {
+  color: var(--color-purple);
+  font-family: 'Suisse BP Int\'l', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.agenda-back:hover {
+  color: var(--color-dark-purple);
+}
+
+.agenda-list-section {
+  width: 100%;
+  max-width: var(--text-width);
+}
+
+.agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agenda-event {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  background: #FFF;
+  border-left: 6px solid var(--color-purple);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.agenda-event:hover {
+  border-left-color: var(--color-green);
+  transform: translateX(2px);
+}
+
+/* Pastille de date : reprend le duo violet/vert du reste du site. */
+.agenda-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 64px;
+  height: 64px;
+  background: var(--color-light-blue);
+  color: var(--color-dark-purple);
+  font-family: 'BaseNeue', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.agenda-date-day {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.agenda-date-month {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.agenda-event-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.agenda-event-title {
+  color: var(--color-black);
+  font-family: 'Base Neue', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+/* .location-page p impose une graisse 100 : on la renforce ici pour la lisibilité. */
+.agenda-page .agenda-event-when {
+  color: var(--color-dark-purple);
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.agenda-page .agenda-event-location {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.agenda-page .agenda-event-description {
+  font-size: 16px;
+  font-weight: 400;
+  /* Conserve les retours à la ligne saisis dans le calendrier. */
+  white-space: pre-line;
+}
+
+.agenda-page .agenda-message {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 24px 0;
+}
+
+.agenda-page .agenda-message-error {
+  color: var(--color-dark-purple);
+}
+
+.agenda-page .agenda-notice {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark-purple);
+  background: var(--color-light-blue);
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+/* Sous 1280px le sticker passe en haut à gauche du header : on décale le lien. */
+@media (max-width: 1280px) {
+  .nav-agenda {
+    left: 115px;
+  }
+
+  .nav-agenda-label {
+    font-size: 16px;
+    max-width: 220px;
+  }
+}
+
+/* Sur mobile la place manque entre le sticker et les 3 icônes de droite :
+   on garde l'icône seule, le libellé restant lu par les lecteurs d'écran
+   via l'aria-label du lien. */
+@media (max-width: 768px) {
+  .nav-agenda {
+    left: 100px;
+    gap: 0;
+  }
+
+  .nav-agenda-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .agenda-event {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .agenda-date {
+    flex-basis: 54px;
+    height: 54px;
+  }
+
+  .agenda-date-day {
+    font-size: 22px;
+  }
+}

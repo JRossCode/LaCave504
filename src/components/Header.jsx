@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Sticker from "./Sticker";
-function Header({ sticker, instagram, envelope, location, openEnvelope, emailAssociation }) {
+function Header({ sticker, instagram, envelope, location, openEnvelope, emailAssociation, calendar }) {
     const [hasScrolled, setHasScrolled] = useState(false);
     const [position, setPosition] = useState({ x: 90, y: 350 });
     const [dragging, setDragging] = useState(false);
@@ -66,6 +66,12 @@ function Header({ sticker, instagram, envelope, location, openEnvelope, emailAss
 
             <div className="header-content">
                 <Sticker position={position} dragging={dragging} handleDown={handleDown} sticker={sticker} nav={window.innerWidth < 1280} />
+
+                <Link to="/agenda" className="nav-agenda" aria-label="Nos prochains ateliers et animations">
+                    <img src={calendar} alt="" className="nav-icon" />
+                    <span className="nav-agenda-label">Nos prochains ateliers&nbsp;/&nbsp;animations</span>
+                </Link>
+
                 <nav className="navigation">
                     <div className="nav-item instagram">
                         <img src={instagram} alt="Instagram" className="nav-icon" onClick={() => window.open("https://www.instagram.com/lacave504/", "_blank")} />

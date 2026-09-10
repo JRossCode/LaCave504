@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Location from "./pages/Location";
 import Home from "./pages/Home";
+import Agenda from "./pages/Agenda";
 function App() {
 
   const emailAssociation = 'contact@lacve504.fr';
@@ -14,6 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home emailAssociation={emailAssociation} />} />
+        <Route path="/agenda" element={<Agenda emailAssociation={emailAssociation} />} />
         <Route path="/location"
           element={<Location
             latitude={LATITUDE}

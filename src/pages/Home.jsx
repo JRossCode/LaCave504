@@ -13,6 +13,7 @@ import instagram from '../assets/icons/Instagram.png';
 import menu from '../assets/icons/Menu.png';
 import openEnvelope from '../assets/icons/Open Envelope.png';
 import location from '../assets/icons/Location.png';
+import calendar from '../assets/icons/Calendar.png';
 
 export default function Home({ emailAssociation }) {
     return (
@@ -31,6 +32,7 @@ export default function Home({ emailAssociation }) {
                     menu={menu}
                     openEnvelope={openEnvelope}
                     location={location}
+                    calendar={calendar}
                     emailAssociation={emailAssociation}
                 />
 
