@@ -545,7 +545,17 @@ a {
 
 .stripe-purple,
 .stripe-light {
+  height: 100%;
+  flex: 1;
   transition: background 0.4s ease;
+}
+
+.stripe-purple {
+  background: var(--color-purple);
+}
+
+.stripe-light {
+  background: var(--color-light-blue);
 }
 
 .contact-container {
@@ -695,8 +705,17 @@ a {
     font-size: 28px;
   }
 
+  /* Photos et footer à 75 % de leur taille desktop-tablette. */
+  .photos-section img {
+    height: 300px;
+  }
+
+  .contact-section {
+    height: 330px;
+  }
+
   .contact-title {
-    font-size: 48px;
+    font-size: 36px;
   }
 
   .decorative-image {
