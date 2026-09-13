@@ -48,12 +48,12 @@ function Header({ sticker, instagram, envelope, location, openEnvelope, emailAss
             <div className="header-content">
                 <Sticker position={position} dragging={dragging} handleDown={handleDown} sticker={sticker} nav={window.innerWidth < 1280} />
 
-                <Link to="/agenda" className="nav-agenda" aria-label="Nos prochains ateliers et animations">
-                    <img src={calendar} alt="" className="nav-icon" />
-                    <span className="nav-agenda-label">Nos prochains ateliers&nbsp;/&nbsp;animations</span>
-                </Link>
-
                 <nav className="navigation">
+                    <Link to="/agenda" className="nav-agenda" aria-label="Nos prochains ateliers et animations">
+                        <img src={calendar} alt="" className="nav-icon" />
+                        <span className="nav-agenda-label">Nos prochains ateliers&nbsp;/&nbsp;animations</span>
+                    </Link>
+
                     <div className="nav-item instagram">
                         <img src={instagram} alt="Instagram" className="nav-icon" onClick={() => window.open("https://www.instagram.com/lacave504/", "_blank")} />
                     </div>

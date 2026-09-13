@@ -211,16 +211,25 @@ a {
   }
 }
 
+/* Bandeau sur toute la largeur du header : lien agenda à gauche
+   (margin-right: auto), icônes à droite. Le conteneur lui-même laisse passer
+   les clics (sticker, titre) : seuls ses enfants sont cliquables. */
 .navigation {
   display: flex;
   padding: 10px;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
   position: absolute;
   top: 16px;
+  left: 10px;
   right: 20px;
   z-index: 2;
+  pointer-events: none;
+}
+
+.navigation > * {
+  pointer-events: auto;
 }
 
 .nav-item {
@@ -700,8 +709,7 @@ a {
 }
 /* ==========================================================================
    Lien agenda dans le header
-   Positionné en absolu comme .navigation, à la même hauteur (top: 16px) mais
-   ancré à gauche du .header-content.
+   Premier enfant de .navigation, repoussé à gauche par margin-right: auto.
    ========================================================================== */
 
 .nav-agenda {
@@ -709,10 +717,7 @@ a {
   padding: 5px;
   align-items: center;
   gap: 12px;
-  position: absolute;
-  top: 16px;
-  left: 20px;
-  z-index: 2;
+  margin-right: auto;
   cursor: pointer;
   text-decoration: none;
 }
@@ -883,7 +888,7 @@ a {
 /* Sous 1280px le sticker passe en haut à gauche du header : on décale le lien. */
 @media (max-width: 1280px) {
   .nav-agenda {
-    left: 115px;
+    margin-left: 95px;
   }
 
   .nav-agenda-label {
@@ -892,12 +897,12 @@ a {
   }
 }
 
-/* Sur mobile la place manque entre le sticker et les 3 icônes de droite :
-   on garde l'icône seule, le libellé restant lu par les lecteurs d'écran
-   via l'aria-label du lien. */
+/* Sur mobile la place manque : l'icône rejoint les 3 autres à droite, sans
+   libellé (il reste lu par les lecteurs d'écran via l'aria-label du lien). */
 @media (max-width: 768px) {
   .nav-agenda {
-    left: 100px;
+    margin-left: 0;
+    margin-right: 0;
     gap: 0;
   }
 
