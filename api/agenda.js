@@ -186,17 +186,24 @@ export default async function handler(req, res) {
         return send(res, 405, { error: 'Méthode non autorisée' }, 'no-store');
     }
 
+    // `/api/agenda?refresh=1` : on ignore le cache mémoire et on répond sans
+    // cache CDN, pour vérifier immédiatement qu'un événement tout juste ajouté
+    // au calendrier remonte bien. Le CDN inclut la query string dans sa clé de
+    // cache : cette URL n'est donc jamais servie depuis le cache d'1 h.
+    const forceRefresh = new URL(req.url, 'http://localhost').searchParams.has('refresh');
+
     // Cache mémoire encore valide : réponse immédiate, aucun appel réseau.
-    if (cache && cache.expiresAt > Date.now()) {
+    if (!forceRefresh && cache && cache.expiresAt > Date.now()) {
         return send(res, 200, cache.payload, CACHE_HEADER);
     }
 
     try {
         const events = parseIcs(await fetchIcs(FEED_URL));
         const payload = { events, count: events.length, updatedAt: new Date().toISOString(), stale: false };
+        // Le rafraîchissement forcé met aussi à jour le cache de l'instance.
         cache = { payload, expiresAt: Date.now() + CACHE_TTL_MS };
         lastGood = payload;
-        return send(res, 200, payload, CACHE_HEADER);
+        return send(res, 200, payload, forceRefresh ? 'no-store' : CACHE_HEADER);
     } catch (error) {
         // Flux injoignable : on préfère servir des données un peu vieilles
         // plutôt qu'une page en erreur, avec un cache court pour réessayer vite.

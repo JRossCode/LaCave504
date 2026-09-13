@@ -1,6 +1,6 @@
 import '../App.css';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 /** Les ateliers ont lieu à Paris : on affiche toujours l'heure locale parisienne,
  *  quel que soit le fuseau du visiteur. */
@@ -88,12 +88,18 @@ export default function Agenda({ emailAssociation }) {
     const [status, setStatus] = useState('loading');
     const [events, setEvents] = useState([]);
     const [stale, setStale] = useState(false);
+    // `/agenda?refresh` : contourne le cache (CDN + serveur) pour voir tout de
+    // suite un événement qui vient d'être ajouté au calendrier.
+    const forceRefresh = new URLSearchParams(useLocation().search).has('refresh');
 
     useEffect(() => {
         // Évite de mettre à jour l'état si le composant est démonté entre-temps.
         const controller = new AbortController();
 
-        fetch('/api/agenda', { signal: controller.signal })
+        fetch(forceRefresh ? '/api/agenda?refresh=1' : '/api/agenda', {
+            signal: controller.signal,
+            cache: forceRefresh ? 'no-store' : 'default',
+        })
             .then(async (response) => {
                 const data = await response.json().catch(() => null);
                 if (!response.ok || !data) throw new Error('Agenda indisponible');
@@ -109,7 +115,7 @@ export default function Agenda({ emailAssociation }) {
             });
 
         return () => controller.abort();
-    }, []);
+    }, [forceRefresh]);
 
     return (
         <div className="location-page agenda-page">
