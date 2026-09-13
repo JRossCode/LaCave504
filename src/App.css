@@ -707,6 +707,7 @@ a {
 
   /* Photos et footer à 75 % de leur taille desktop-tablette. */
   .photos-section img {
+    width: 322px;
     height: 300px;
   }
 
