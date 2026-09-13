@@ -1,22 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Sticker from "./Sticker";
 function Header({ sticker, instagram, envelope, location, openEnvelope, emailAssociation, calendar }) {
-    const [hasScrolled, setHasScrolled] = useState(false);
     const [position, setPosition] = useState({ x: 90, y: 350 });
     const [dragging, setDragging] = useState(false);
     const offset = useRef({ x: 0, y: 0 });
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!hasScrolled && window.scrollY > 0) {
-                setHasScrolled(true);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [hasScrolled]);
 
     const handleDown = (e) => {
         setDragging(true);
@@ -55,14 +43,7 @@ function Header({ sticker, instagram, envelope, location, openEnvelope, emailAss
             onTouchMove={handleMove}
             onTouchEnd={handleUp}
         >
-            <div className={`header-background ${hasScrolled ? "solid" : ""}`}>
-                {[...Array(41)].map((_, i) => (
-                    <div
-                        key={i}
-                        className={i % 2 === 0 ? "stripe-purple" : "stripe-light"}
-                    />
-                ))}
-            </div>
+            <div className="header-background" />
 
             <div className="header-content">
                 <Sticker position={position} dragging={dragging} handleDown={handleDown} sticker={sticker} nav={window.innerWidth < 1280} />

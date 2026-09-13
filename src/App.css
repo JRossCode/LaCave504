@@ -112,34 +112,8 @@ a {
   overflow: hidden;
   left: 0;
   top: 0;
-  display: flex;
+  background: var(--color-purple);
   z-index: 0;
-}
-
-.header-background.solid {
-  background: var(--color-purple);
-}
-
-.stripe-purple,
-.stripe-light {
-  transition: background 0.6s ease;
-}
-
-.header-background.solid .stripe-purple,
-.header-background.solid .stripe-light {
-  background: transparent;
-}
-
-.stripe-purple {
-  height: 100%;
-  background: var(--color-purple);
-  flex: 1;
-}
-
-.stripe-light {
-  height: 100%;
-  background: var(--color-light-blue);
-  flex: 1;
 }
 
 .logo {
