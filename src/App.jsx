@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Agenda from "./pages/Agenda";
 function App() {
 
-  const emailAssociation = 'contact@lacve504.fr';
+  const emailAssociation = 'contact@lacave504.fr';
   const numAssociation = '06 79 20 37 31';
   const adresseAtelier = ['La Partagerie', '30 Rue Mozart', '92110 Clichy'];
   const adressePostale = ['La Cave 504', '12 rue forchot', '75009 Paris'];
